@@ -1,6 +1,7 @@
 package io.edrb.transferservice.config;
 
-import org.glassfish.hk2.utilities.binding.AbstractBinder;
+
+import org.glassfish.jersey.internal.inject.AbstractBinder;
 
 public class TransferServiceBinder extends AbstractBinder {
 
