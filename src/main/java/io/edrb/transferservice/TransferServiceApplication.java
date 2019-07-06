@@ -23,7 +23,8 @@ public class TransferServiceApplication {
 
         ServletHolder servletHolder = ctx.addServlet(ServletContainer.class, "/api/*");
         servletHolder.setInitOrder(1);
-        servletHolder.setInitParameter("jersey.config.server.provider.packages","io.edrb.transferservice.resource");
+        //servletHolder.setInitParameter("jersey.config.server.provider.packages","io.edrb.transferservice.resource");
+        servletHolder.setInitParameter("javax.ws.rs.Application","io.edrb.transferservice.config.TransferServiceConfig");
 
         try {
             server.start();
