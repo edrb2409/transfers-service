@@ -29,6 +29,13 @@ public class AccountResource {
         return accountService.save(customerId, account);
     }
 
+    @GET
+    @Path("/{accountId}")
+    public Account getAccount(@PathParam("customerId") String customerId,
+                            @PathParam("accountId") String accountId) {
+        return accountService.findById(customerId, accountId);
+    }
+
 
     @DELETE
     @Path("/{accountId}")

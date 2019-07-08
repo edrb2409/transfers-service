@@ -8,9 +8,14 @@ public interface AccountService {
 
     Account save(String customerId, Account account);
 
+    Account update(Account account);
+
     List<Account> findAllByCustomer(String customerId);
 
     Account delete(String customerId, String accountId);
 
     Account findById(String accountId);
+
+    Account findById(String customerId, String accountId);
+
 }

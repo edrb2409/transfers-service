@@ -8,12 +8,15 @@ import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Singleton
 public class CustomerResource {
+
+    private static final Logger LOGGER = Logger.getLogger("CustomerResource");
 
     @Inject
     private CustomerService customerService;
@@ -25,6 +28,7 @@ public class CustomerResource {
 
     @POST
     public Customer saveCustomer(Customer customer) {
+        LOGGER.info("Saving customer " + customer);
         return customerService.save(customer);
     }
 

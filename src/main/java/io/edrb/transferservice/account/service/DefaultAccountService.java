@@ -22,7 +22,7 @@ public class DefaultAccountService implements AccountService {
 
         account.setCustomerId(customerId);
 
-        return accountRepository.save(account);
+        return save(account);
     }
 
     @Override
@@ -44,5 +44,26 @@ public class DefaultAccountService implements AccountService {
     public Account findById(String accountId) {
         return accountRepository.findById(accountId)
                 .orElseThrow(AccountNotFoundException::new);
+    }
+
+    @Override
+    public Account update(Account account) {
+        Account accountFound = accountRepository.findById(account.getId())
+                .orElseThrow(AccountNotFoundException::new);
+
+        accountFound.setBalance(account.getBalance());
+
+        return save(account);
+    }
+
+    @Override
+    public Account findById(String customerId, String accountId) {
+        customerService.findById(customerId);
+
+        return findById(accountId);
+    }
+
+    private Account save(Account account) {
+        return accountRepository.save(account);
     }
 }
